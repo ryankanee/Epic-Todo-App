@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
-import LogIn from "./components/loginPage";
 import TodoList from "./components/todoList";
+import Auth from "./components/Auth";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -21,7 +21,7 @@ function App() {
       {isLoggin ? (
         <TodoList currentUser={currentUser} onLogout={handleLogout} />
       ) : (
-        <LogIn onLogin={handleLogin} />
+        <Auth onLogin={handleLogin} />
       )}
     </div>
   );

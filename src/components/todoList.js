@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import ToDoHeader from "./todoHeader";
 
 function TodoList({ currentUser, onLogout }) {
   const [tasks, setTasks] = useState(() => {
@@ -70,8 +71,7 @@ function TodoList({ currentUser, onLogout }) {
         </button>
       </div>
       <div className="todo-list">
-        <h1>Todo List!</h1>
-
+        <ToDoHeader/>
         <form onSubmit={addTask}>
           <div className="input-group">
             <input
