@@ -2,7 +2,7 @@ import { useState } from "react";
 import SignUp from "./signUpPage";
 import Login from "./login";
 
-function Auth({ onLogin }) {
+function Auth() {
   const [hasAccount, setHasAccount] = useState(true);
 
   const handleHasAccount = () => {
@@ -13,16 +13,12 @@ function Auth({ onLogin }) {
     setHasAccount(false);
   };
 
-  const handleLogIn = (user) => {
-    onLogin(user);
-  };
-
   return (
     <>
       {hasAccount ? (
-        <Login needsAccount={handleNeedsAccount} Login={handleLogIn} />
+        <Login needsAccount={handleNeedsAccount} />
       ) : (
-        <SignUp hasAccount={handleHasAccount} Login={handleLogIn} />
+        <SignUp hasAccount={handleHasAccount} />
       )}
     </>
   );

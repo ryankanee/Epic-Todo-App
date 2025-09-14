@@ -1,8 +1,10 @@
 import ToDoHeader from "./todoHeader";
 import { useState } from "react";
+import { useAuth } from "../contexts/AuthContext";
 
-function Login({ needsAccount, Login }) {
-  const [allUsers, setAllUsers] = useState(
+function Login({ needsAccount }) {
+  const { login } = useAuth();
+  const [allUsers] = useState(
     () => JSON.parse(localStorage.getItem("Users")) || [],
   );
 
@@ -26,7 +28,7 @@ function Login({ needsAccount, Login }) {
         setUsernameAlert(true);
         return;
       }
-      Login(user.trim());
+      login(user.trim());
     }
   };
 

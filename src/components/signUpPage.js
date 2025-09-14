@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import ToDoHeader from "./todoHeader";
+import { useAuth } from "../contexts/AuthContext";
 
-function SignUp({ hasAccount, Login }) {
+function SignUp({ hasAccount }) {
+  const { login } = useAuth();
   const [allUsers, setAllUsers] = useState(
     () => JSON.parse(localStorage.getItem("Users")) || [],
   );
@@ -40,7 +42,7 @@ function SignUp({ hasAccount, Login }) {
       setAllUsers(updatedUsers);
       setUser("");
       setPassword("");
-      Login(user.trim());
+      login(user.trim());
     }
   };
 

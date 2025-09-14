@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import ToDoHeader from "./todoHeader";
+import { useAuth } from "../contexts/AuthContext";
 
-function TodoList({ currentUser, onLogout }) {
+function TodoList() {
+  const { currentUser, logout } = useAuth();
   const [tasks, setTasks] = useState(() => {
     const stored = localStorage.getItem(currentUser || "default");
     return stored ? JSON.parse(stored) : [];
@@ -56,10 +58,6 @@ function TodoList({ currentUser, onLogout }) {
       ];
       setTasks(updatedArray);
     }
-  };
-
-  const logout = () => {
-    onLogout();
   };
 
   return (
